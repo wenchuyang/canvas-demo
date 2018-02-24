@@ -15,13 +15,41 @@ brush.onclick = function () {
   actions.className = 'actions'
 }
 
-listenToMouse()
-
-
-
+if('ontouchstart' in document.body){
+  listenToTouch()  
+}else{
+  listenToMouse()
+}
 
 
 /*************** */
+function listenToTouch() {
+  var oldPoint, newPoint
+
+  canvas.ontouchstart = function (xxx) {
+    using = true
+    oldPoint = setPoint(xxx.targetTouches[0].clientX, xxx.targetTouches[0].clientY)
+    if (eraserUsing) {
+      context.clearRect(xxx.targetTouches[0].clientX - 5, xxx.targetTouches[0].clientY - 5, 10, 10)
+    } else {
+      draw(xxx.clientX, xxx.clientY, 5)
+    }
+  }
+  canvas.ontouchmove = function (xxx) {
+    if (using) {
+      newPoint = setPoint(xxx.targetTouches[0].clientX, xxx.targetTouches[0].clientY)
+      if (eraserUsing) {
+        context.clearRect(xxx.targetTouches[0].clientX - 5, xxx.targetTouches[0].clientY - 5, 10, 10)
+      } else {
+        drawLine(oldPoint, newPoint, 10)
+      }
+      oldPoint = newPoint
+    }
+  }
+  canvas.ontouchend = function () {
+    using = false
+  }
+}
 function listenToMouse() {
   var oldPoint, newPoint
 
