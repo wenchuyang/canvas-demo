@@ -1,0 +1,25 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+body > main{
+  position: relative;
+}
+canvas.canvas{
+  background-color: rgb(243, 163, 163);
+  vertical-align: top;
+}
+.actions>button.eraser,.actions>button.brush{
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+.actions>button.brush{
+  display: none;
+}
+.actions.active > button.brush{
+  display: inline-block;
+}
+.actions.active > button.eraser{
+  display: none;
+}

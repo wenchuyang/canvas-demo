@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>我的画板Demo</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    main.canvas {
+      width: 100vw;
+      height: 100vh;
+      background-color: rgb(241, 164, 164);
+    }
+  </style>
+</head>
+
+<body>
+  <main class="canvas" id="canvas">
+
+  </main>
+  <script>
+    var div = document.getElementById('canvas')
+    var using = false
+    div.onmousedown = function (xxx) {
+      using = true
+      draw(xxx.clientX, xxx.clientY, div)
+    }
+    div.onmousemove = function (xxx) {
+      if (using) {
+        draw(xxx.clientX, xxx.clientY, div)
+      }
+    }
+    div.onmouseup = function (xxx) {
+      using = false
+    }
+    function draw(x, y, div) {
+      var divA = document.createElement('div')
+      divA.style = `width: 5px; height: 5px;
+        background-color: black; 
+        border-radius: 50%;
+        position: absolute;
+        top: `+ (y - 2.5) + `px;
+        left: `+ (x - 2.5) + `px;
+      `
+        div.appendChild(divA)
+    }
+  </script>
+</body>
+
+</html>
