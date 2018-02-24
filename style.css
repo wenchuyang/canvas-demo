@@ -1,28 +1,90 @@
-*{
+* {
   margin: 0;
   padding: 0;
 }
-body > main{
+
+ul, ul>li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+body>main {
   position: relative;
 }
-canvas.canvas{
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-color: rgb(243, 163, 163);
+
+canvas.canvas {
   vertical-align: top;
 }
-.actions>button.eraser,.actions>button.brush{
+
+.actions {
   position: absolute;
   top: 10px;
   left: 10px;
+  padding: 10px;
 }
-.actions>button.brush{
-  display: none;
+
+.actions>svg {
+  margin-left: 10px;
+  transition: all 0.2s;
 }
-.actions.active > button.brush{
-  display: inline-block;
+
+.icon {
+  width: 34px;
+  height: 34px;
+  vertical-align: -0.15em;
+  fill: black;
+  overflow: hidden;
 }
-.actions.active > button.eraser{
-  display: none;
+
+.actions>svg.active{
+  transform: scale(1.2);
+}
+
+.color {
+  position: absolute;
+  top: 74px;
+  left: 34px;
+}
+
+ul.color>li {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  margin-top: 10px;
+  transition: all 0.2s;
+  box-shadow: 0 0 3px rgba(0,0,0,0.25);  
+}
+.color>.red {
+  background-color: red;
+}
+.color>.green {
+  background-color: green;
+}
+.color>.blue {
+  background-color: blue;
+}
+.color>.black {
+  background-color: black;
+}
+.color>.active{
+  transform: scale(1.2);
+  box-shadow: 0 0 3px rgba(0,0,0,0.95);  
+}
+.sizes{
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  padding-right: 20px;
+}
+.sizes > .thin, .sizes >.thick{
+  background-color: black;
+  width: 35px;
+  margin: 10px 0;
+}
+.sizes > .thin{
+  height: 5px;
+}
+.sizes >.thick{
+  height: 10px;
 }
